@@ -2,19 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 
 class GameController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index(): View
     {
-        dump("xD");
+        $games = DB::table('games')
+        ->select('id','title','score','genre_id')
+        ->get();
+
+        return view('game.list', [
+            'games' => $games
+        ]);
     }
+
+    public function show(int $gameID): View
+    {
+        $game = DB::table('games')->find($gameID);
+        return view('game.show', [
+            'game' => $game
+        ]);
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -37,16 +50,8 @@ class GameController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $game
-     * @return \Illuminate\Http\Response
-     */
-    public function show($game)
-    {
-        //
-    }
+
+
 
     /**
      * Show the form for editing the specified resource.

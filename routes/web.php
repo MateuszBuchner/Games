@@ -19,7 +19,6 @@ use App\Http\Controllers\User\ProfileController;
 */
 
 
-
 Route::get('/', MainPage::class)
     ->name('home.mainPage');
 
@@ -34,3 +33,6 @@ Route::post('/users/{id}', [ProfileController::class, 'show'])
 
 Route::get('/users/{userId}', [UserController::class, 'show'])
     ->name('get.users.show');
+
+
+Route::resource('games', GameController::class);
