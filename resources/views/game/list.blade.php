@@ -1,6 +1,89 @@
 @extends('layout.main')
 
 @section('content')
+
+    <div class="row mt-3">
+        <div class="col-x col-x1-3 col-md-6 mb-4">
+            <div class="card border-left shadow-sm py-2 h-100">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-lg-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Liczba gier</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $stats['count'] }}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-gamepad fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-x col-x1-3 col-md-6 mb-4">
+            <div class="card border-left shadow-sm py-2 h-100">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-lg-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Liczba gier 50+</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $stats['countScoreFift'] }}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-gamepad fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-x col-x1-3 col-md-6 mb-4 ">
+            <div class="card border-left shadow-sm py-2 h-100">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-lg-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Średnia ocena</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $stats['avg'] }}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa-solid fa-percent fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-x col-x1-3 col-md-6 mb-4">
+            <div class="card border-left shadow-sm py-2 h-100">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-lg-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Maksymalna ocena</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $stats['max'] }}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa-brands fa-hotjar fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-x col-x1-3 col-md-6 mb-4">
+            <div class="card border-left shadow-sm py-2 h-100">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-lg-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Minimalna ocena</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $stats['min'] }}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa-solid fa-droplet fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="row mt-3">
         <div class="card">
             <div class="card-header"><i class="fas fa-table mr-1"></i>Lista użytkowników</div>
