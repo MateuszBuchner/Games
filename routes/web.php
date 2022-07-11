@@ -34,5 +34,8 @@ Route::post('/users/{id}', [ProfileController::class, 'show'])
 Route::get('/users/{userId}', [UserController::class, 'show'])
     ->name('get.users.show');
 
+Route::get('/games/dashboard', [GameController::class, 'dashboard'])
+    ->name('games.dashboard');
+
 
 Route::resource('games', GameController::class);

@@ -28,7 +28,7 @@ class GamesSeeder extends Seeder
                 'describe' => $faker->sentence,
                 'publisher' => $faker->randomElement(['Atari', 'EA', 'Blizzard', 'Ubosift']),
                 'genre_id' => $faker->numberBetween(1, 5),
-                'score' => $faker->numberBetween(1, 100),
+                'score' => $faker->numberBetween(1, 10),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ];
