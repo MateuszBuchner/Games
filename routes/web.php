@@ -1,10 +1,9 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Game\BuilderController;
+use App\Http\Controllers\Game\EloquentController;
 use App\Http\Controllers\Home\MainPage;
-use App\Http\Controllers\GameController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\User\ShowAddress;
 use App\Http\Controllers\User\ProfileController;
 
 /*
@@ -22,6 +21,7 @@ use App\Http\Controllers\User\ProfileController;
 Route::get('/', MainPage::class)
     ->name('home.mainPage');
 
+//Users
 Route::get('/users', [UserController::class, 'list'] )
     ->name('get.users');
 
@@ -34,8 +34,45 @@ Route::post('/users/{id}', [ProfileController::class, 'show'])
 Route::get('/users/{userId}', [UserController::class, 'show'])
     ->name('get.users.show');
 
-Route::get('/games/dashboard', [GameController::class, 'dashboard'])
-    ->name('games.dashboard');
+//Games
 
+Route::group([
+    'prefix' => 'b/games',
+    'namespace' => 'Game',
+    'as' => 'games.b.'
+], function() {
+    Route::get('dashboard', [BuilderController::class, 'dashboard'])
+        ->name('dashboard');
 
-Route::resource('games', GameController::class);
+    Route::get('', [BuilderController::class, 'index'])
+        ->name('list');
+
+    Route::get('{game}', [BuilderController::class, 'show'])
+        ->name('show');
+});
+
+Route::group([
+    'prefix' => 'e/games',
+    'namespace' => 'Game',
+    'as' => 'games.e.'
+], function() {
+    Route::get('dashboard', [EloquentController::class, 'dashboard'])
+        ->name('dashboard');
+
+    Route::get('', [EloquentController::class, 'index'])
+        ->name('list');
+
+    Route::get('{game}', [EloquentController::class, 'show'])
+        ->name('show');
+});
+
+// Route::prefix('/b/games/')->group(function () {
+//     Route::get('dashboard', [BuilderController::class, 'dashboard'])
+//         ->name('games.b.dashboard');
+
+//     Route::get('', [BuilderController::class, 'index'])
+//         ->name('games.b.list');
+
+//     Route::get('{game}', [BuilderController::class, 'show'])
+//         ->name('games.b.show');
+// });
